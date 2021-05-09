@@ -11,31 +11,25 @@ public class HexPlacement : MonoBehaviour
 
     public Vector2Int PlaceSelf(ref Vector2Int[] positions)
     {
-        // TODO Split into smaller functions
-
-        // Modify the valid positions - eg. only x away from spawn etc.
         Vector2Int[] validPositions = Modify(positions);
-
-        // Check if the hex constellation would fit
         validPositions = CheckSize(validPositions);
 
-        // Pick one of the valid positions randomly and remove the occupied fields from positions
+        // TODO what to do if no position is valid?
+
         var finalPosition = validPositions[Random.Range(0, validPositions.Length)];
-
-        // Remove the newly occupied fields from all positions
         positions = RemovePositions(finalPosition, positions);
-
-        // TODO what to do if no position valid?
 
         return finalPosition;
     } 
 
+    // sort out the available positions according to rules set with scriptable objects to allow for a lot of variation
     private Vector2Int[] Modify(Vector2Int[] positions)
     {
         // TODO Implement placement modifiers
         return positions;
     }
 
+    // check for positions where the constellation of hexes fits
     private Vector2Int[] CheckSize(Vector2Int[] validPositions)
     {
         List<Vector2Int> newValidPositions = new List<Vector2Int>();
@@ -53,6 +47,7 @@ public class HexPlacement : MonoBehaviour
         return newValidPositions.ToArray();
     }
 
+    // remove the newly occupied spaces from the overall available positions
     private Vector2Int[] RemovePositions(Vector2Int finalPos, Vector2Int[] positions)
     {
         List<Vector2Int> newPositions = positions.ToList();

@@ -6,8 +6,10 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed;
+
     private CharacterController _controller;
     private Vector2 _direction;
+
     private void Start()
     {
         _controller = GetComponent<CharacterController>();

@@ -7,7 +7,9 @@ public class HexManager : MonoBehaviour
 {
     [SerializeField] private float _radius;
     [SerializeField] private GameObject[] _hexes;
-    [SerializeField] private Vector2Int[] _hexDirections;
+
+    // TODO automatic registering of hexDirections, so a level designer will only need to add the neighbouring hexes as gameObjects and doesn't need to know about the axial coordinate system
+    [SerializeField] private Vector2Int[] _hexDirections; 
     [SerializeField] private Vector2Int[] _neighborDirections;
 
     private void Start()
@@ -15,6 +17,7 @@ public class HexManager : MonoBehaviour
         RegisterNeighbors();
     }
 
+    // register the directions (from local 0,0 - point) to the neighbouring hexes of the current constellation
     private void RegisterNeighbors()
     {
         if (_hexes.Length == 0 || _hexes.Length != _hexDirections.Length)
@@ -41,13 +44,14 @@ public class HexManager : MonoBehaviour
         _neighborDirections = _neighbors.ToArray();
     }
 
+    // set the debug coordinates for all hexes within the current constellation
     public void SetCoordinates(Vector2Int origin)
     {
         for(int i = 0; i < _hexes.Length; i++)
         {
             int q = origin.x + _hexDirections[i].x;
             int r = origin.y + _hexDirections[i].y;
-            _hexes[i].GetComponent<Coordinates>().SetCoords(q, r);
+            _hexes[i].GetComponent<AxialCoordinates>().SetCoords(q, r);
         }
     }
 

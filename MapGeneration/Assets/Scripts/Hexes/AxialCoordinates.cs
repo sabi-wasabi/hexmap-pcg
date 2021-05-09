@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Coordinates : MonoBehaviour
+public class AxialCoordinates : MonoBehaviour
 {
+    // debug class for showing the axial coordinates of the hex on screen and saving them somewhere on the hex
     [SerializeField] private TextMeshProUGUI coords;
     private int q;
     private int r;

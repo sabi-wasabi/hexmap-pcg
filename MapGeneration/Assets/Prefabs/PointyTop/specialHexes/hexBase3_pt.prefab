@@ -95,19 +95,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4949642543816160672, guid: ed232b36058560c40a58771077ab1791, type: 3}
       propertyPath: _hexDirections.Array.data[1].x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4949642543816160672, guid: ed232b36058560c40a58771077ab1791, type: 3}
       propertyPath: _hexDirections.Array.data[1].y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949642543816160672, guid: ed232b36058560c40a58771077ab1791, type: 3}
       propertyPath: _hexDirections.Array.data[2].x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4949642543816160672, guid: ed232b36058560c40a58771077ab1791, type: 3}
       propertyPath: _hexDirections.Array.data[2].y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5450395342037730208, guid: ed232b36058560c40a58771077ab1791, type: 3}
       propertyPath: m_RootOrder
@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5450395342037730215, guid: ed232b36058560c40a58771077ab1791, type: 3}
       propertyPath: m_Name
-      value: hexBase3
+      value: hexBase3_pt
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed232b36058560c40a58771077ab1791, type: 3}
