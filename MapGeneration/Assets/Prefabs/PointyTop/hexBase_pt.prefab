@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4949642543816160672}
   - component: {fileID: 4555988268647271078}
   m_Layer: 0
-  m_Name: hexBase
+  m_Name: hexBase_pt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1166b997b3ad12c4cbc785ff01b67e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 10
+  _radius: 30
   _hexes:
   - {fileID: 652156244743230396}
   _hexDirections:
