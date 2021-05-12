@@ -35,12 +35,12 @@ public static class HexUtility
         Mathf.Sqrt(3f)
     );
 
-    public static Vector3 HexGridToWorld(Vector2Int position, float radius, float yPos, bool pointyTop)
+    public static Vector3 HexGridToWorld(Vector2Int position, float radius, float yPos, bool pointyTop = true)
     {
         return HexGridToWorld(position.x, position.y, radius, yPos, pointyTop);
     }
 
-    public static Vector3 HexGridToWorld(int q, int r, float radius, float yPos, bool pointyTop)
+    public static Vector3 HexGridToWorld(int q, int r, float radius, float yPos, bool pointyTop = true)
     {
         Layout layout = pointyTop ? _layoutPointy : _layoutFlat;
         return new Vector3

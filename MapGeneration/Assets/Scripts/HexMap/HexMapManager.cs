@@ -9,7 +9,7 @@ public class HexMapManager : MonoBehaviour
 
     [SerializeField] private MapGenerator _generator;
     [SerializeField] private int _size;
-    [SerializeField] private bool _pointyTop;
+    [SerializeField] private bool _pointyTop; // TODO make flat top work somehow
     [SerializeField] private float _seed;
 
     private float _hexRadius;

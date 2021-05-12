@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 4728710761852697050, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36bce9ab6cae8ce43962938466458044, type: 2}
     - target: {fileID: 5896599216625812149, guid: c9dff7f631191264fb635150a62a1311, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -89,6 +93,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1300432903969616489, guid: f1b1031b1c6fefd459716631bbf55997, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36bce9ab6cae8ce43962938466458044, type: 2}
     - target: {fileID: 4949642543816160672, guid: f1b1031b1c6fefd459716631bbf55997, type: 3}
       propertyPath: _hexes.Array.size
       value: 3
@@ -203,6 +211,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -30
       objectReference: {fileID: 0}
+    - target: {fileID: 4728710761852697050, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36bce9ab6cae8ce43962938466458044, type: 2}
     - target: {fileID: 5896599216625812149, guid: c9dff7f631191264fb635150a62a1311, type: 3}
       propertyPath: m_RootOrder
       value: 2

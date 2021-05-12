@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        var vCam = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<CinemachineVirtualCamera>();
+        vCam.Follow = transform;
+        vCam.LookAt = transform;
     }
     public void Update()
     {

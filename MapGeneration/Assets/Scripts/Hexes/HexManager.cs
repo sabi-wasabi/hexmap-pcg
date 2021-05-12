@@ -17,7 +17,7 @@ public class HexManager : MonoBehaviour
         RegisterNeighbors();
     }
 
-    // register the directions (from local 0,0 - point) to the neighbouring hexes of the current constellation
+    // register the directions (from local 0,0 point) to the neighbouring hexes of the current constellation
     private void RegisterNeighbors()
     {
         if (_hexes.Length == 0 || _hexes.Length != _hexDirections.Length)
