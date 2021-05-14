@@ -71,25 +71,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5450395342037730208}
     m_Modifications:
-    - target: {fileID: 4466413965775696260, guid: c9dff7f631191264fb635150a62a1311, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.8660254
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallPF
+      value: 
+      objectReference: {fileID: 5564070435293114021, guid: 2653b6d214982eb45956645a4bf7887e, type: 3}
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[0]
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4466413965775696260, guid: c9dff7f631191264fb635150a62a1311, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.5
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[1]
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4466413965775696260, guid: c9dff7f631191264fb635150a62a1311, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[2]
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4466413965775696260, guid: c9dff7f631191264fb635150a62a1311, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[3]
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4466413965775696260, guid: c9dff7f631191264fb635150a62a1311, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[5]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5896599216625812149, guid: c9dff7f631191264fb635150a62a1311, type: 3}
       propertyPath: m_RootOrder

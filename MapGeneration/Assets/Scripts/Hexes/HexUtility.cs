@@ -27,22 +27,14 @@ public static class HexUtility
         3f / 2f
     );
 
-    private static Layout _layoutFlat = new Layout
-    (
-        3f / 2f,
-        0f,
-        Mathf.Sqrt(3f) / 2,
-        Mathf.Sqrt(3f)
-    );
-
-    public static Vector3 HexGridToWorld(Vector2Int position, float radius, float yPos, bool pointyTop = true)
+    public static Vector3 HexGridToWorld(Vector2Int position, float radius, float yPos)
     {
-        return HexGridToWorld(position.x, position.y, radius, yPos, pointyTop);
+        return HexGridToWorld(position.x, position.y, radius, yPos);
     }
 
-    public static Vector3 HexGridToWorld(int q, int r, float radius, float yPos, bool pointyTop = true)
+    public static Vector3 HexGridToWorld(int q, int r, float radius, float yPos)
     {
-        Layout layout = pointyTop ? _layoutPointy : _layoutFlat;
+        Layout layout = _layoutPointy;
         return new Vector3
         (
             (layout.xModifierQ * q + layout.xModifierR * r) * radius,

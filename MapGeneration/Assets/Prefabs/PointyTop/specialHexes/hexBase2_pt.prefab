@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8186120397356104271}
     m_Modifications:
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3255277046388572612, guid: c9dff7f631191264fb635150a62a1311, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4728710761852697050, guid: c9dff7f631191264fb635150a62a1311, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -144,6 +152,14 @@ PrefabInstance:
     - target: {fileID: 5450395342037730215, guid: ed232b36058560c40a58771077ab1791, type: 3}
       propertyPath: m_Name
       value: hexBase2_pt
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132948808892942967, guid: ed232b36058560c40a58771077ab1791, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132948808892942967, guid: ed232b36058560c40a58771077ab1791, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[5]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed232b36058560c40a58771077ab1791, type: 3}

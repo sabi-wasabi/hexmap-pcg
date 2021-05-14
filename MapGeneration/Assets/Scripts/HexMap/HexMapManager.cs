@@ -9,7 +9,6 @@ public class HexMapManager : MonoBehaviour
 
     [SerializeField] private MapGenerator _generator;
     [SerializeField] private int _size;
-    [SerializeField] private bool _pointyTop; // TODO make flat top work somehow
     [SerializeField] private float _seed;
 
     private float _hexRadius;
@@ -41,6 +40,9 @@ public class HexMapManager : MonoBehaviour
         SpawnHexes();
 
         // Recursive Backtracking
+
+        // Spawn Walls
+        InstantiateWalls();
     }
 
     private void SpawnHexes()
@@ -58,11 +60,23 @@ public class HexMapManager : MonoBehaviour
 
     private void Spawn(Vector2Int position, GameObject prefab)
     {
-        var pos = HexUtility.HexGridToWorld(position, _hexRadius, transform.position.y, _pointyTop);
+        var pos = HexUtility.HexGridToWorld(position, _hexRadius, transform.position.y);
         var hex = Instantiate(prefab, pos, prefab.transform.rotation, transform);
 
         var hexManager = hex.GetComponent<HexManager>();
         hexManager.SetCoordinates(position);
         _hexMap.Add(position, hexManager);
+    }
+
+    private void InstantiateWalls()
+    {
+        foreach(var hex in _hexMap)
+        {
+            var wallManagers = hex.Value.GetComponentsInChildren<WallManager>();
+            foreach(var wallManager in wallManagers)
+            {
+                wallManager.InstantiateWalls();
+            }
+        }
     }
 }

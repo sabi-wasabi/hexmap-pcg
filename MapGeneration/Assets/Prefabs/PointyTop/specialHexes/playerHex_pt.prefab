@@ -59,6 +59,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: playerHex_pt
       objectReference: {fileID: 0}
+    - target: {fileID: 9132948808892942967, guid: ed232b36058560c40a58771077ab1791, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132948808892942967, guid: ed232b36058560c40a58771077ab1791, type: 3}
+      propertyPath: _wallSettingsModifier.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed232b36058560c40a58771077ab1791, type: 3}
 --- !u!4 &827367861860728494 stripped
