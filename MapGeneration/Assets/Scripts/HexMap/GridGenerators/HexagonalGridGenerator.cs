@@ -3,7 +3,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "ScriptableObjects/HexMapGenerator")]
-public class HexagonalMapGenerator : MapGenerator
+public class HexagonalGridGenerator : GridGenerator
 {
     public override Vector2Int[] GenerateMapGrid(int size)
     {

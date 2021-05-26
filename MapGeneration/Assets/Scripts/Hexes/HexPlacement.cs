@@ -6,11 +6,12 @@ using System.Linq;
 public class HexPlacement : MonoBehaviour
 {
     [SerializeField] private ScriptableObject[] _placementModifiers;
-
-    private Vector2Int[] _hexDirections { get { return GetComponent<HexManager>().GetHexDirections(); } }
+    private Vector2Int[] _hexPosOffsets;
 
     public Vector2Int PlaceSelf(ref Vector2Int[] positions)
     {
+        _hexPosOffsets = GetComponent<HexBase>().GetHexPositionOffsets();
+
         Vector2Int[] validPositions = Modify(positions);
         validPositions = CheckSize(validPositions);
 
@@ -36,7 +37,7 @@ public class HexPlacement : MonoBehaviour
         foreach (var pos in validPositions)
         {
             bool fits = true;
-            foreach (var hexDir in _hexDirections)
+            foreach (var hexDir in _hexPosOffsets)
             {
                 if (!validPositions.Contains(pos + hexDir)) 
                     fits = false;
@@ -52,7 +53,7 @@ public class HexPlacement : MonoBehaviour
     {
         List<Vector2Int> newPositions = positions.ToList();
 
-        foreach(var hexDir in _hexDirections)
+        foreach(var hexDir in _hexPosOffsets)
         {
             newPositions.Remove(finalPos + hexDir);
         }

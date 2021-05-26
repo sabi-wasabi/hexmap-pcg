@@ -44,17 +44,6 @@ public class HexManager : MonoBehaviour
         _neighborDirections = _neighbors.ToArray();
     }
 
-    // set the debug coordinates for all hexes within the current constellation
-    public void SetCoordinates(Vector2Int origin)
-    {
-        for(int i = 0; i < _hexes.Length; i++)
-        {
-            int q = origin.x + _hexDirections[i].x;
-            int r = origin.y + _hexDirections[i].y;
-            _hexes[i].GetComponent<AxialCoordinates>().SetCoords(q, r);
-        }
-    }
-
     public Vector2Int GetRandomNeighbor()
     {
         return _neighborDirections[Random.Range(0, _neighborDirections.Length)];
