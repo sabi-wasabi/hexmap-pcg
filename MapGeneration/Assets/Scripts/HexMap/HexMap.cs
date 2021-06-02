@@ -37,7 +37,7 @@ public class HexMap : MonoBehaviour
             specialHexPositionAndPrefab.Add((specialPos, compositeHex));
         }
 
-        // Make some Noise
+        // Make some Noise (Put wholes in the map with some Noise texture)
 
 
         // Instantiate Hexes

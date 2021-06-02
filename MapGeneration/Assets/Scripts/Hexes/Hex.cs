@@ -22,4 +22,17 @@ public class Hex : HexBase
     {
         return new []{new Vector2Int(0,0)};
     }
+
+    public override void RegisterNeighbors()
+    {
+        for (int q = -1; q <= 1; q++)
+        {
+            for (int r = -1; r <= 1; r++)
+            {
+                if (q == r) continue;
+
+                Vector2Int position = new Vector2Int(_coords.x + q, _coords.y + r);
+            }
+        }
+    }
 }

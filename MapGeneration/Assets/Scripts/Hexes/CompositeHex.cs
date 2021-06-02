@@ -24,4 +24,9 @@ public class CompositeHex : HexBase
     {
         return _hexPositionOffsets;
     }
+
+    public override void RegisterNeighbors()
+    {
+        throw new System.NotImplementedException();
+    }
 }
