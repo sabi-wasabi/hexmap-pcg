@@ -26,39 +26,48 @@ public class HexMap : MonoBehaviour
     {
         // Create HexGrid
         Vector2Int[] positions = _gridGenerator.GenerateMapGrid(_mapSize);
-        List<(Vector2Int, GameObject)> specialHexPositionAndPrefab = new List<(Vector2Int, GameObject)>();
+        List<(Vector2Int, GameObject)> hexPositionsAndPrefab = new List<(Vector2Int, GameObject)>();
 
         // Modify HexGrid
-        // Combine Positions for bigger special CompositeHexes
-
+            // Combine Positions for bigger special CompositeHexes
+            // Fill the rest up with normal hexes
         foreach (var compositeHex in _specialHexes)
         {
             var specialPos = compositeHex.GetComponent<HexPlacement>().PlaceSelf(ref positions);
-            specialHexPositionAndPrefab.Add((specialPos, compositeHex));
+            hexPositionsAndPrefab.Add((specialPos, compositeHex));
         }
 
-        // Make some Noise (Put wholes in the map with some Noise texture)
-
+        foreach (var pos in positions)
+        {
+            hexPositionsAndPrefab.Add((pos, _basicHex));
+        }
 
         // Instantiate Hexes
-        InstantiateHexes(positions, specialHexPositionAndPrefab);
+            // Register Neighbors
+            // Setup all Walls for backtracking
+        InstantiateHexes(hexPositionsAndPrefab);
 
         // Recursive Backtracking for Wall Placement
 
+
         // Instantiate Walls
+        foreach (var hex in _hexGrid)
+        {
+            hex.Value.InstantiateWalls();
+        }
 
     }
 
-    private void InstantiateHexes(Vector2Int[] basicPositions, List<(Vector2Int, GameObject)> specialHexPositionAndPrefab)
+    private void InstantiateHexes(List<(Vector2Int, GameObject)> hexPositionAndPrefab)
     {
-        foreach (var specialHex in specialHexPositionAndPrefab)
+        foreach (var hex in hexPositionAndPrefab)
         {
-            Spawn(specialHex.Item1, specialHex.Item2);
+            Spawn(hex.Item1, hex.Item2);
         }
 
-        foreach (var position in basicPositions)
+        foreach (var hex in _hexGrid)
         {
-            Spawn(position, _basicHex);
+            //hex.Value.RegisterNeighbors();
         }
     }
 
@@ -71,16 +80,4 @@ public class HexMap : MonoBehaviour
         hex.SetCoordinates(position);
         _hexGrid.Add(position, hex);
     }
-    
-    //private void InstantiateWalls()
-    //{
-    //    foreach(var hex in _hexMap)
-    //    {
-    //        var wallManagers = hex.Value.GetComponentsInChildren<WallManager>();
-    //        foreach(var wallManager in wallManagers)
-    //        {
-    //            wallManager.InstantiateWalls();
-    //        }
-    //    }
-    //}
 }

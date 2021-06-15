@@ -15,19 +15,19 @@ public class WallManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject _wallPF;
-    [SerializeField] private bool[] _wallSettingsModifier = new bool[6];
+    [SerializeField] private readonly bool[] _wallSettingsModifier = new bool[6];
 
     private Transform _wallParent;
     private (Orientation, bool)[] _wallSettings = new (Orientation, bool)[6]; // degrees / isWallThere
 
-    private float _hexRadius; // too short???
+    private float _hexRadius;
     private float _apothem;
 
     void Awake()
     {
         _wallParent = transform.Find("Walls");
 
-        _hexRadius = transform.parent.GetComponent<HexManager>().GetRadius();
+        _hexRadius = GetComponent<Hex>().GetRadius();
         _apothem = Mathf.Sqrt(Mathf.Pow(_hexRadius, 2) - Mathf.Pow((_hexRadius / 2), 2));
 
         _wallSettings = new (Orientation, bool)[]
@@ -71,6 +71,5 @@ public class WallManager : MonoBehaviour
     {
         int idx = (int)orientation / 60;
         _wallSettings[idx].Item2 = isActive;
-
     }
 }

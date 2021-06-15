@@ -30,7 +30,7 @@ public static class HexUtility
         public float yModifierQ, yModifierR;
     }
 
-    private static Layout _layoutPointy = new Layout
+    private static readonly Layout LayoutPointy = new Layout
     (
         Mathf.Sqrt(3f),
         Mathf.Sqrt(3f) / 2,
@@ -45,7 +45,7 @@ public static class HexUtility
 
     public static Vector3 HexGridToWorld(int q, int r, float radius, float yPos)
     {
-        Layout layout = _layoutPointy;
+        Layout layout = LayoutPointy;
         return new Vector3
         (
             (layout.xModifierQ * q + layout.xModifierR * r) * radius,

@@ -29,4 +29,10 @@ public class CompositeHex : HexBase
     {
         throw new System.NotImplementedException();
     }
+
+    public override void InstantiateWalls()
+    {
+        foreach(var hex in _hexes)
+            hex.InstantiateWalls();
+    }
 }

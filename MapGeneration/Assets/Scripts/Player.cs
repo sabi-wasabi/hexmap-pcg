@@ -28,3 +28,4 @@ public class Player : MonoBehaviour
         _direction = ctx.ReadValue<Vector2>();
     }
 }
+ 
