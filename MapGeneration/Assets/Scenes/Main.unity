@@ -335,7 +335,7 @@ MonoBehaviour:
   - {fileID: 2025704477529632989, guid: 7080cac60ec117b46af8516e82b1f7ca, type: 3}
   - {fileID: 452351056908356789, guid: 4594c8af0e5d49d4b83821d688f9d1fe, type: 3}
   - {fileID: 452351056908356789, guid: 4594c8af0e5d49d4b83821d688f9d1fe, type: 3}
-  _mapSize: 15
+  _mapSize: 10
   _gridGenerator: {fileID: 11400000, guid: e729d8392dbafae40b6ffe0c7415ce8e, type: 2}
 --- !u!1 &935086676
 GameObject:
