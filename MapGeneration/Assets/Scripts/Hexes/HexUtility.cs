@@ -6,16 +6,6 @@ using UnityEngine;
 public static class HexUtility
 {
     // A static class for various hex-related conversions and calculations
-    public enum Orientation
-    {
-        East = 0,
-        NorthEast = 60,
-        NorthWest = 120,
-        West = 180,
-        SouthWest = 240,
-        SouthEast = 300,
-    }
-
     public class Layout
     {
         public Layout(float xQ, float xR, float yQ, float yR)
