@@ -16,6 +16,16 @@ public static class HexUtility
         SouthEast = 300,
     }
 
+    public static readonly IReadOnlyDictionary<Orientation, Vector2Int> OrientationCoordMap = new Dictionary<Orientation, Vector2Int>
+    {
+        {Orientation.East, new Vector2Int(1,0) },
+        {Orientation.NorthEast, new Vector2Int(0,1) },
+        {Orientation.NorthWest, new Vector2Int(-1,1) },
+        {Orientation.West, new Vector2Int(-1,0) },
+        {Orientation.SouthWest, new Vector2Int(0,-1) },
+        {Orientation.SouthEast, new Vector2Int(1,-1) },
+    };
+
     public class Layout
     {
         public Layout(float xQ, float xR, float yQ, float yR)
@@ -71,5 +81,20 @@ public static class HexUtility
             coords.x,
             coords.y
         );
+    }
+
+    public static Vector2Int AngleToHexCoordsDirection(float angle)
+    {
+        int a = (int)(angle - angle % 60);
+        Orientation o = (Orientation)a;
+        return OrientationCoordMap[o];
+    }
+
+    public static Vector2Int Vector2ToHexCoordsDirection(Vector2 direction)
+    {
+        float angle = Vector2.SignedAngle(Vector2.right, direction);
+        if (angle < 0)
+            angle += 360f;
+        return AngleToHexCoordsDirection(angle);
     }
 }
