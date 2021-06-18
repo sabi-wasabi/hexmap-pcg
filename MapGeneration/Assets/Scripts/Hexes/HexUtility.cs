@@ -16,6 +16,9 @@ public static class HexUtility
         SouthEast = 300,
     }
 
+    /// <summary>
+    /// Maps hexagonal orientation angles to the corresponding hex coordinate direction vector.
+    /// </summary>
     public static readonly IReadOnlyDictionary<Orientation, Vector2Int> OrientationCoordMap = new Dictionary<Orientation, Vector2Int>
     {
         {Orientation.East, new Vector2Int(1,0) },
@@ -83,6 +86,12 @@ public static class HexUtility
         );
     }
 
+    /// <summary>
+    /// Calculate a hex coordinate direction from an angle where 0 degree
+    /// points eastward.
+    /// </summary>
+    /// <param name="angle">The angle in degree.</param>
+    /// <returns>the hex coordinate direction vector.</returns>
     public static Vector2Int AngleToHexCoordsDirection(float angle)
     {
         angle += 30f;
@@ -91,6 +100,11 @@ public static class HexUtility
         return OrientationCoordMap[o];
     }
 
+    /// <summary>
+    /// Calculate a hex coordinate direction from a Vector2.
+    /// </summary>
+    /// <param name="direction">The direction vector.</param>
+    /// <returns>the hex coordinate direction vector.</returns>
     public static Vector2Int Vector2ToHexCoordsDirection(Vector2 direction)
     {
         float angle = Vector2.SignedAngle(Vector2.right, direction);

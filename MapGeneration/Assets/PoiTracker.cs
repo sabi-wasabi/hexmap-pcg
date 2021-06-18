@@ -13,8 +13,17 @@ public class PoiTracker : MonoBehaviour
     private HexAgent _agent = default;
     private SortedList<float, PoiTrackingContext> _sortedPaths = new SortedList<float, PoiTrackingContext>();
 
+    /// <summary>
+    /// Unordered Gameobject set with all registered POIs.
+    /// </summary>
     public GameObject[] PoiSet => _poiSet.Items.ToArray();
+    /// <summary>
+    /// POI tracking data sorted by path distance.
+    /// </summary>
     public PoiTrackingContext[] PoisSortedByDistance => _sortedPaths.Values.ToArray();
+    /// <summary>
+    /// POI tracking data for the nearest POI.
+    /// </summary>
     public PoiTrackingContext NearestPoi => PoisSortedByDistance[0];
 
 
@@ -47,9 +56,9 @@ public class PoiTracker : MonoBehaviour
     }
 
 
-    public void OnEnterHex(GameObject _) => Refresh();
+    public void OnEnterHex(HexBase _) => Refresh();
 
-    public void OnLeaveHex(GameObject _) => Refresh();
+    public void OnLeaveHex(HexBase _) => Refresh();
 
 
     private void Refresh()
@@ -64,7 +73,7 @@ public class PoiTracker : MonoBehaviour
             {
                 PoiTrackingContext ctx = new PoiTrackingContext
                 {
-                    PoiHex = poi,
+                    PoiHex = poiHex,
                     Path = path,
                     HasArrived = false,
                 };
@@ -74,7 +83,7 @@ public class PoiTracker : MonoBehaviour
                 if (poiHex == _agent.CurrentHex)
                 {
                     ctx.HasArrived = true;
-                    ctx.NextHex = poi;
+                    ctx.NextHex = poiHex;
                 }
                 else if (_agent.CurrentHex.TryGetComponent(out Hex currentHex) && path.corners.Length >= 2)
                 {
@@ -84,7 +93,7 @@ public class PoiTracker : MonoBehaviour
                     if (currentHex.Neighbors.ContainsKey(directionHex))
                     {
                         HexBase neighbor = currentHex.Neighbors[directionHex];
-                        ctx.NextHex = neighbor.gameObject;
+                        ctx.NextHex = neighbor;
                     }
                 }
 
@@ -96,14 +105,19 @@ public class PoiTracker : MonoBehaviour
 
     public struct PoiTrackingContext
     {
-        public GameObject PoiHex;
-        public GameObject NextHex;
+        public HexBase PoiHex;
+        public HexBase NextHex;
         public NavMeshPath Path;
         public bool HasArrived;
         public float Distance;
     }
 
 
+    /// <summary>
+    /// Calculate traveling distance for a Nav Mesh Path.
+    /// </summary>
+    /// <param name="path">the Nav Mesh Path to get the distance from.</param>
+    /// <returns>traveling distance of the path.</returns>
     public static float CalculatePathDistance(NavMeshPath path)
     {
         float distance = 0f;

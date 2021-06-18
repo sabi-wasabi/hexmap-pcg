@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class HexAgent : MonoBehaviour
 {
-    private readonly List<GameObject> _currentHexes = new List<GameObject>();
+    private readonly List<HexBase> _currentHexes = new List<HexBase>();
 
-    public GameObject[] OverlappingHexes => _currentHexes.ToArray();
-    public GameObject CurrentHex => _currentHexes.Count == 0 ? null : _currentHexes[_currentHexes.Count - 1];
+    public HexBase[] OverlappingHexes => _currentHexes.ToArray();
+    public HexBase CurrentHex => _currentHexes.Count == 0 ? null : _currentHexes[_currentHexes.Count - 1];
 
 
-    public void EnterHex(GameObject hex)
+    public void EnterHex(HexBase hex)
     {
         _currentHexes.Add(hex);
         SendMessage("OnEnterHex", hex, SendMessageOptions.DontRequireReceiver);
     }
 
-    public void LeaveHex(GameObject hex)
+    public void LeaveHex(HexBase hex)
     {
         if (_currentHexes.Remove(hex))
             SendMessage("OnLeaveHex", hex, SendMessageOptions.DontRequireReceiver);

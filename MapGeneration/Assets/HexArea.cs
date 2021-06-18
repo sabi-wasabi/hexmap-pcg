@@ -5,16 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(HexBase))]
 public class HexArea : MonoBehaviour
 {
-    private readonly List<GameObject> _currentAgents = new List<GameObject>();
+    private readonly List<HexAgent> _currentAgents = new List<HexAgent>();
+    private HexBase _hex = default;
 
-    public GameObject[] Agents => _currentAgents.ToArray();
+    public HexAgent[] Agents => _currentAgents.ToArray();
+
+    private void Awake()
+    {
+        _hex = GetComponent<HexBase>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out HexAgent agent))
         {
-            _currentAgents.Add(agent.gameObject);
-            agent.EnterHex(gameObject);
+            _currentAgents.Add(agent);
+            agent.EnterHex(_hex);
         }
     }
 
@@ -22,8 +28,8 @@ public class HexArea : MonoBehaviour
     {
         if (other.TryGetComponent(out HexAgent agent))
         {
-            _currentAgents.Remove(agent.gameObject);
-            agent.LeaveHex(gameObject);
+            _currentAgents.Remove(agent);
+            agent.LeaveHex(_hex);
         }
     }
 }
