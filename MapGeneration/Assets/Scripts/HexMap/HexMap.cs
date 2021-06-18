@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HexMap : MonoBehaviour
@@ -15,6 +16,7 @@ public class HexMap : MonoBehaviour
     
     private float _hexSize;
     private Dictionary<Vector2Int, HexBase> _hexGrid = new Dictionary<Vector2Int, HexBase>();
+    private List<HexBase> _allHexes = new List<HexBase>();
 
     private void Start()
     {
@@ -48,14 +50,12 @@ public class HexMap : MonoBehaviour
         InstantiateHexes(hexPositionsAndPrefab);
 
         // Recursive Backtracking for Wall Placement
+        _hexGrid.ElementAt(Random.Range(0, _hexGrid.Count)).Value.Visit();
 
 
         // Instantiate Walls
-        foreach (var hex in _hexGrid)
-        {
-            hex.Value.InstantiateWalls();
-        }
-
+        foreach(var hex in _allHexes)
+            hex.InstantiateWalls();
     }
 
     private void InstantiateHexes(List<(Vector2Int, GameObject)> hexPositionAndPrefab)
@@ -65,9 +65,9 @@ public class HexMap : MonoBehaviour
             Spawn(hex.Item1, hex.Item2);
         }
 
-        foreach (var hex in _hexGrid)
+        foreach (var hex in _allHexes)
         {
-            //hex.Value.RegisterNeighbors();
+            hex.RegisterNeighbors(_hexGrid);
         }
     }
 
@@ -78,6 +78,10 @@ public class HexMap : MonoBehaviour
 
         var hex = hexGO.GetComponent<HexBase>();
         hex.SetCoordinates(position);
-        _hexGrid.Add(position, hex);
+
+        _allHexes.Add(hex);
+        var offsets = hex.GetHexPositionOffsets();
+        foreach(var offset in offsets)  
+            _hexGrid.Add(position + offset, hex);
     }
 }
