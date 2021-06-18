@@ -12,13 +12,14 @@ public class Hex : HexBase
     [SerializeField] private float _wallScaleY;
     [SerializeField] private GameObject _wallPF;
 
-    private List<(HexBase, Vector2Int)> _neighbors = new List<(HexBase, Vector2Int)>();
+    // private List<(HexBase, Vector2Int)> _neighbors = new List<(HexBase, Vector2Int)>();
+    private readonly IDictionary<Vector2Int, HexBase> _neighbors = new Dictionary<Vector2Int, HexBase>(6);
     private Vector2Int[] _selfOffsets = new Vector2Int[]{ new Vector2Int(0,0)};
 
     private Transform _wallParent;
     private (Vector2Int, bool)[] _wallSettings = new (Vector2Int, bool)[6]; // Offset to neighbor in that direction, isWallThere?
 
-    private static readonly Dictionary<Vector2Int, float> _wallOrientation = new Dictionary<Vector2Int, float>()
+    private static readonly IReadOnlyDictionary<Vector2Int, float> _wallOrientation = new Dictionary<Vector2Int, float>()
     {
         {new Vector2Int(1,0), 0},
         {new Vector2Int(0,1), 60},
@@ -28,9 +29,13 @@ public class Hex : HexBase
         {new Vector2Int(1,-1), 300}
     };
 
+
+    public IReadOnlyDictionary<Vector2Int, HexBase> Neighbors => (IReadOnlyDictionary<Vector2Int, HexBase>)_neighbors;
+
+
     public void Awake()
     {
-        visited = false; 
+        Visited = false; 
         _wallParent = transform.Find("Walls");
         _apothem = Mathf.Sqrt(Mathf.Pow(_radius, 2) - Mathf.Pow((_radius / 2), 2));
 
@@ -48,7 +53,7 @@ public class Hex : HexBase
 
     public override void SetCoordinates(Vector2Int coords)
     {
-        this.coords = coords;
+        this.Coords = coords;
         GetComponent<DebugCoordinates>().SetCoordinates(coords);
     }
 
@@ -66,15 +71,15 @@ public class Hex : HexBase
                 if (q != r)
                 {
                     Vector2Int offSet = new Vector2Int(q, r);
-                    if (hexGrid.ContainsKey(coords + offSet))
+                    if (hexGrid.ContainsKey(Coords + offSet))
                     {
                         if (_selfOffsets.Contains(offSet))
                         {
-                            SetWall(offSet, false, coords + offSet);
+                            SetWall(offSet, false, Coords + offSet);
                         }
                         else
                         {
-                            _neighbors.Add((hexGrid[coords + offSet], offSet));
+                            _neighbors.Add(offSet, hexGrid[Coords + offSet]);
                         }
                     }
                 }
@@ -110,7 +115,7 @@ public class Hex : HexBase
 
     public override void Visit()
     {
-        visited = true;
+        Visited = true;
         bool unvisitedNeighborsLeft = true;
         while (unvisitedNeighborsLeft)
         {
@@ -120,8 +125,8 @@ public class Hex : HexBase
             {
                 var randomNeighbor = unvisitedNeighbors[UnityEngine.Random.Range(0, unvisitedNeighbors.Length)];
 
-                SetWall(randomNeighbor.Item2, false, coords + randomNeighbor.Item2);
-                randomNeighbor.Item1.SetWall(randomNeighbor.Item2 * (-1), false, coords);
+                SetWall(randomNeighbor.Item2, false, Coords + randomNeighbor.Item2);
+                randomNeighbor.Item1.SetWall(randomNeighbor.Item2 * (-1), false, Coords);
 
                 randomNeighbor.Item1.Visit();
             }
@@ -147,7 +152,7 @@ public class Hex : HexBase
         List<(HexBase, Vector2Int)> unvisitedNeighbors = new List<(HexBase, Vector2Int)>();
         foreach (var neighbor in _neighbors)
         {
-            if(!neighbor.Item1.visited) unvisitedNeighbors.Add(neighbor);
+            if(!neighbor.Value.Visited) unvisitedNeighbors.Add((neighbor.Value, neighbor.Key));
         }
         return unvisitedNeighbors.ToArray();
     }

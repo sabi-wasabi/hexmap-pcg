@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class HexBase : MonoBehaviour
 {
-    public bool visited { get; set; }
-    public Vector2Int coords { get; set; }
+    public bool Visited { get; set; }
+    public Vector2Int Coords { get; set; }
     public abstract float GetRadius();
     public abstract void SetCoordinates(Vector2Int coords);
     public abstract Vector2Int[] GetHexPositionOffsets();

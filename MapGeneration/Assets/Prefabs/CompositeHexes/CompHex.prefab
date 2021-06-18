@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4555920335825053702}
   - component: {fileID: 2331126360445324932}
   - component: {fileID: 928630088033025544}
+  - component: {fileID: 2430984077146519295}
   m_Layer: 0
   m_Name: CompHex
   m_TagString: Untagged
@@ -68,6 +69,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _placementModifiers: []
+--- !u!114 &2430984077146519295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452351056908356789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd6aa3bd2d4df340abf8bad70ecdafb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectSet: {fileID: 11400000, guid: 87cd2f39608d50f49ba393b902d411ca, type: 2}
 --- !u!1001 &3891328582852441792
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15e77f54486d006449fcaa95d651e680, type: 3}
-  m_Name: SET_POI_HEXES
+  m_Script: {fileID: 11500000, guid: 4184a75b08bc0dd468092085972dcec7, type: 3}
+  m_Name: ButlerBuild
   m_EditorClassIdentifier: 
-  _items: []
+  account: the-pigeon-protocol
+  project: test-01
+  configuration: Release
+  steamAppId: -1
+  scenes: []
+  buildInfos: []

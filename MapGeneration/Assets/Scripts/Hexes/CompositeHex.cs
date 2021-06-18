@@ -10,7 +10,7 @@ public class CompositeHex : HexBase
 
     private void Awake()
     {
-        visited = false;
+        Visited = false;
         RegisterFriendsOnHexes();
     }
 
@@ -21,7 +21,7 @@ public class CompositeHex : HexBase
 
     public override void SetCoordinates(Vector2Int coordinates)
     {
-        this.coords = coordinates;
+        this.Coords = coordinates;
         for (int i = 0; i < _hexes.Length; i++)
         {
             _hexes[i].SetCoordinates(_hexPositionOffsets[i] + coordinates);
@@ -47,7 +47,7 @@ public class CompositeHex : HexBase
 
     public override void SetWall(Vector2Int offSet, bool isActive, Vector2Int otherCoords)
     {
-        Vector2Int affectedHexCoords = (otherCoords - offSet) - coords;
+        Vector2Int affectedHexCoords = (otherCoords - offSet) - Coords;
         int affectedHexIdx = Array.IndexOf(_hexPositionOffsets, affectedHexCoords);
         _hexes[affectedHexIdx].SetWall(offSet, isActive, otherCoords);
 
@@ -55,8 +55,8 @@ public class CompositeHex : HexBase
 
     public override void Visit()
     {
-        visited = true;
-        foreach (var hex in _hexes) hex.visited = true;
+        Visited = true;
+        foreach (var hex in _hexes) hex.Visited = true;
 
         bool hexesWithUnvisitedNeighborsLeft = true;
         while (hexesWithUnvisitedNeighborsLeft)
