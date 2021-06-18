@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 15
-  _wallScaleX: 2
+  _wallScaleX: 2.1
   _wallScaleY: 5
   _wallPF: {fileID: 5564070435293114021, guid: 2653b6d214982eb45956645a4bf7887e, type: 3}
 --- !u!135 &1681822613

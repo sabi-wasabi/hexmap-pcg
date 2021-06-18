@@ -14,4 +14,5 @@ public abstract class HexBase : MonoBehaviour
     public abstract void InstantiateWalls();
     public abstract void SetWall(Vector2Int offSet, bool isActive, Vector2Int otherCoords);
     public abstract void Visit();
+    public abstract Vector3 GetWorldPosition();
 }

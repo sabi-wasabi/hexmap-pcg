@@ -7,7 +7,7 @@ public class HexAgent : MonoBehaviour
     private readonly List<GameObject> _currentHexes = new List<GameObject>();
 
     public GameObject[] OverlappingHexes => _currentHexes.ToArray();
-    public GameObject CurrentHex => _currentHexes[_currentHexes.Count - 1];
+    public GameObject CurrentHex => _currentHexes.Count == 0 ? null : _currentHexes[_currentHexes.Count - 1];
 
 
     public void EnterHex(GameObject hex)

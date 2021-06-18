@@ -27,17 +27,21 @@ public class PoiTracker : MonoBehaviour
     {
         if (_debugDrawPaths)
         {
+            bool shortest = true;
             foreach (var ctx in PoisSortedByDistance)
             {
-                Gizmos.color = Color.blue;
+                Gizmos.color = shortest ? Color.cyan : Color.blue;
                 for (int i=1; i < ctx.Path.corners.Length; i++)
                 {
                     Gizmos.DrawLine(ctx.Path.corners[i - 1], ctx.Path.corners[i]);
                     Gizmos.DrawCube(ctx.Path.corners[i], Vector3.one * .5f);
                 }
 
-                Gizmos.color = Color.red;
-                Gizmos.DrawSphere(ctx.NextHex.transform.position, 3f);
+                Gizmos.color = shortest ? Color.magenta : Color.red;
+                if (ctx.NextHex != null)
+                    Gizmos.DrawSphere(ctx.NextHex.transform.position, shortest ? 4f : 3f);
+                
+                shortest = false;
             }
         }
     }
@@ -52,15 +56,17 @@ public class PoiTracker : MonoBehaviour
     {
         _sortedPaths.Clear();
 
-        foreach (var poiHex in _poiSet.Items)
+        foreach (var poi in _poiSet.Items)
         {
+            var poiHex = poi.GetComponent<HexBase>();
             NavMeshPath path = new NavMeshPath();
-            if (NavMesh.CalculatePath(_agent.CurrentHex.transform.position, poiHex.transform.position, NavMesh.AllAreas, path))
+            if (NavMesh.CalculatePath(_agent.CurrentHex.transform.position, poiHex.GetWorldPosition(), NavMesh.AllAreas, path))
             {
                 PoiTrackingContext ctx = new PoiTrackingContext
                 {
-                    PoiHex = poiHex,
+                    PoiHex = poi,
                     Path = path,
+                    HasArrived = false,
                 };
 
                 ctx.Distance = CalculatePathDistance(path);
@@ -68,16 +74,15 @@ public class PoiTracker : MonoBehaviour
                 if (poiHex == _agent.CurrentHex)
                 {
                     ctx.HasArrived = true;
-                    ctx.NextHex = poiHex;
+                    ctx.NextHex = poi;
                 }
-                else
+                else if (_agent.CurrentHex.TryGetComponent(out Hex currentHex) && path.corners.Length >= 2)
                 {
-                    ctx.HasArrived = false;
-                    if (_agent.CurrentHex.TryGetComponent(out Hex currentHex))
+                    Vector3 direction3D = path.corners[1] - path.corners[0];
+                    Vector2 direction2D = new Vector2(direction3D.x, direction3D.z);
+                    Vector2Int directionHex = HexUtility.Vector2ToHexCoordsDirection(direction2D);
+                    if (currentHex.Neighbors.ContainsKey(directionHex))
                     {
-                        Vector3 direction3D = path.corners[1] - path.corners[0];
-                        Vector2 direction2D = new Vector2(direction3D.x, direction3D.z);
-                        Vector2Int directionHex = HexUtility.Vector2ToHexCoordsDirection(direction2D);
                         HexBase neighbor = currentHex.Neighbors[directionHex];
                         ctx.NextHex = neighbor.gameObject;
                     }

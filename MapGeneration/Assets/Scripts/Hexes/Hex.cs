@@ -94,7 +94,7 @@ public class Hex : HexBase
             if (wallSetting.Item2)
             {
                 var wall = Instantiate(_wallPF, transform.position, Quaternion.identity);
-                wall.transform.localScale = new Vector3(1, _wallScaleY, _radius);
+                wall.transform.localScale = new Vector3(_wallScaleX, _wallScaleY, _radius);
 
                 var pos = new Vector3(wall.transform.position.x, wall.transform.position.y + wall.transform.localScale.y/2, wall.transform.position.z);
 
@@ -156,4 +156,6 @@ public class Hex : HexBase
         }
         return unvisitedNeighbors.ToArray();
     }
+
+    public override Vector3 GetWorldPosition() => transform.position;
 }

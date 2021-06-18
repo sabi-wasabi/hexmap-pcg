@@ -85,7 +85,8 @@ public static class HexUtility
 
     public static Vector2Int AngleToHexCoordsDirection(float angle)
     {
-        int a = (int)(angle - angle % 60);
+        angle += 30f;
+        int a = (int)((angle - angle % 60) % 360);
         Orientation o = (Orientation)a;
         return OrientationCoordMap[o];
     }

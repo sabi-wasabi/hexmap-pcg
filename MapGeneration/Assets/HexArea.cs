@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(HexBase))]
 public class HexArea : MonoBehaviour
 {
     private readonly List<GameObject> _currentAgents = new List<GameObject>();
 
     public GameObject[] Agents => _currentAgents.ToArray();
-
 
     private void OnTriggerEnter(Collider other)
     {

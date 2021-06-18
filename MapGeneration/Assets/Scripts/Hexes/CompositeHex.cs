@@ -8,10 +8,16 @@ public class CompositeHex : HexBase
     [SerializeField] private Hex[] _hexes;
     [SerializeField] private Vector2Int[] _hexPositionOffsets;
 
+    private Vector3 _worldPosition = default;
+
     private void Awake()
     {
         Visited = false;
         RegisterFriendsOnHexes();
+
+        foreach (var hex in _hexes)
+            _worldPosition += hex.GetWorldPosition();
+        _worldPosition /= _hexes.Length;
     }
 
     public override float GetRadius()
@@ -94,4 +100,6 @@ public class CompositeHex : HexBase
             _hexes[i].SetSelfOffsets(friendOffsets.ToArray());
         }
     }
+
+    public override Vector3 GetWorldPosition() => _worldPosition;
 }
