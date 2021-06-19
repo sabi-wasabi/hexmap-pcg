@@ -330,11 +330,12 @@ MonoBehaviour:
   _basicHex: {fileID: 6530005133896734735, guid: c9dff7f631191264fb635150a62a1311, type: 3}
   _specialHexes:
   - {fileID: 452351056908356789, guid: 895302056a0ee4e4982621da4c5c1d18, type: 3}
-  - {fileID: 452351056908356789, guid: 895302056a0ee4e4982621da4c5c1d18, type: 3}
-  - {fileID: 452351056908356789, guid: 895302056a0ee4e4982621da4c5c1d18, type: 3}
   - {fileID: 2025704477529632989, guid: 7080cac60ec117b46af8516e82b1f7ca, type: 3}
   - {fileID: 452351056908356789, guid: 4594c8af0e5d49d4b83821d688f9d1fe, type: 3}
-  - {fileID: 452351056908356789, guid: 4594c8af0e5d49d4b83821d688f9d1fe, type: 3}
+  - {fileID: 452351056908356789, guid: 24ff615f75dd7d34aa8c4276f124dc6a, type: 3}
+  - {fileID: 452351056908356789, guid: 336c1e30f41d95343a168b6da3e97503, type: 3}
+  - {fileID: 452351056908356789, guid: 28d0250ede9a22e4eaa0539ece161d94, type: 3}
+  - {fileID: 452351056908356789, guid: 811d1f5dc6a01754faf3bfe128aada44, type: 3}
   _mapSize: 10
   _gridGenerator: {fileID: 11400000, guid: e729d8392dbafae40b6ffe0c7415ce8e, type: 2}
 --- !u!1 &935086676

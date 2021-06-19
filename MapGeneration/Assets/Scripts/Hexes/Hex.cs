@@ -30,7 +30,7 @@ public class Hex : HexBase
 
     public void Awake()
     {
-        visited = false; 
+        Visited = false; 
         _wallParent = transform.Find("Walls");
         _apothem = Mathf.Sqrt(Mathf.Pow(_radius, 2) - Mathf.Pow((_radius / 2), 2));
 
@@ -48,7 +48,7 @@ public class Hex : HexBase
 
     public override void SetCoordinates(Vector2Int coords)
     {
-        this.coords = coords;
+        this.Coords = coords;
         GetComponent<DebugCoordinates>().SetCoordinates(coords);
     }
 
@@ -66,15 +66,15 @@ public class Hex : HexBase
                 if (q != r)
                 {
                     Vector2Int offSet = new Vector2Int(q, r);
-                    if (hexGrid.ContainsKey(coords + offSet))
+                    if (hexGrid.ContainsKey(Coords + offSet))
                     {
                         if (_relatives.Contains(offSet))
                         {
-                            SetWall(offSet, false, coords + offSet);
+                            SetWall(offSet, false, Coords + offSet);
                         }
                         else
                         {
-                            _neighbors.Add((hexGrid[coords + offSet], offSet));
+                            _neighbors.Add((hexGrid[Coords + offSet], offSet));
                         }
                     }
                 }
@@ -110,7 +110,7 @@ public class Hex : HexBase
 
     public override void Visit()
     {
-        visited = true;
+        Visited = true;
         bool unvisitedNeighborsLeft = true;
         while (unvisitedNeighborsLeft)
         {
@@ -120,8 +120,8 @@ public class Hex : HexBase
             {
                 var randomNeighbor = unvisitedNeighbors[UnityEngine.Random.Range(0, unvisitedNeighbors.Length)];
 
-                SetWall(randomNeighbor.Item2, false, coords + randomNeighbor.Item2);
-                randomNeighbor.Item1.SetWall(randomNeighbor.Item2 * (-1), false, coords);
+                SetWall(randomNeighbor.Item2, false, Coords + randomNeighbor.Item2);
+                randomNeighbor.Item1.SetWall(randomNeighbor.Item2 * (-1), false, Coords);
 
                 randomNeighbor.Item1.Visit();
             }
@@ -147,7 +147,7 @@ public class Hex : HexBase
         List<(HexBase, Vector2Int)> unvisitedNeighbors = new List<(HexBase, Vector2Int)>();
         foreach (var neighbor in _neighbors)
         {
-            if(!neighbor.Item1.visited) unvisitedNeighbors.Add(neighbor);
+            if(!neighbor.Item1.Visited) unvisitedNeighbors.Add(neighbor);
         }
         return unvisitedNeighbors.ToArray();
     }
