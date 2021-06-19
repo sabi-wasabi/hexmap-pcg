@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HexMap : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class HexMap : MonoBehaviour
     {
         _hexSize = _basicHex.GetComponent<HexBase>().GetRadius();
         GenerateMap();
+
+        if (TryGetComponent(out NavMeshSurface navMesh))
+        {
+            navMesh.BuildNavMesh();
+        }
     }
 
     private void GenerateMap()

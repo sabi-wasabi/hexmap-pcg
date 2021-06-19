@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        transform.parent = null;
         _controller = GetComponent<CharacterController>();
         var vCam = GameObject.FindGameObjectWithTag("VirtualCam").GetComponent<CinemachineVirtualCamera>();
         vCam.Follow = transform;
