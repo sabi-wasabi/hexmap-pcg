@@ -15,7 +15,9 @@ public class PoiGuideArrow : PoiGuide
     protected override void Awake()
     {
         base.Awake();
-        _arrow = Instantiate(_arrowPrefab, _tracker.transform);
+
+        if (enabled)
+            _arrow = Instantiate(_arrowPrefab, _tracker.transform);
     }
 
     private void Update()
