@@ -10,8 +10,6 @@ public class PoiGuideMusicDistance : PoiGuide
     [SerializeField] [Min(0)] float _maxDistance = 500f;
     [SerializeField] bool _usePathfinding = true;
 
-
-    private GameObject _poi = default;
     private AudioSource _audioSource = default;
 
 
@@ -22,6 +20,20 @@ public class PoiGuideMusicDistance : PoiGuide
 
         var poi = _tracker.NearestPoi;
         _audioSource = _music.Play(poi.PoiHex.gameObject);
+    }
+
+    private void OnEnable()
+    {
+        if (_audioSource != null)
+        {
+            _audioSource.enabled = true;
+            _audioSource.Play();
+        }
+    }
+
+    private void OnDisable()
+    {
+        _audioSource.enabled = false;
     }
 
     private void Update()

@@ -16,8 +16,18 @@ public class PoiGuideArrow : PoiGuide
     {
         base.Awake();
 
-        if (enabled)
-            _arrow = Instantiate(_arrowPrefab, _tracker.transform);
+        _arrow = Instantiate(_arrowPrefab, _tracker.transform);
+        _arrow.SetActive(enabled);
+    }
+
+    private void OnEnable()
+    {
+        _arrow.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        _arrow.SetActive(false);
     }
 
     private void Update()

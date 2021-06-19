@@ -28,5 +28,7 @@ public class Player : MonoBehaviour
     {
         _direction = ctx.ReadValue<Vector2>();
     }
+
+    public void SetSpeed(float val) => _speed = val;
 }
  
