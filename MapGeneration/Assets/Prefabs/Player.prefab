@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2110473194}
   - component: {fileID: 233634521365991340}
   - component: {fileID: 3233153042092827666}
+  - component: {fileID: 6137154980084363527}
   m_Layer: 0
   m_Name: Guidance
   m_TagString: Untagged
@@ -40,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110473192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b93b3724feef56448affe0db102b126c, type: 3}
   m_Name: 
@@ -77,6 +78,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soundEffectCorrect: {fileID: 11400000, guid: c82e178db2b36ea47a282881b853b256, type: 2}
   _soundEffectWrong: {fileID: 0}
+--- !u!114 &6137154980084363527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110473192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafbbac6227c2a54cb6302f2d1703ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _music: {fileID: 11400000, guid: e128bb251f84ea94cacaf20267dc67f7, type: 2}
+  _maxDistance: 500
+  _usePathfinding: 1
 --- !u!1 &4289833281424068633
 GameObject:
   m_ObjectHideFlags: 0

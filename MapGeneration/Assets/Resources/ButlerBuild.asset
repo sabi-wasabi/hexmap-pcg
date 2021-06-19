@@ -16,5 +16,6 @@ MonoBehaviour:
   project: test-01
   configuration: Release
   steamAppId: -1
-  scenes: []
+  scenes:
+  - {fileID: 102900000, guid: 4b74164b8dc1ee14996ff11eae3aaf18, type: 3}
   buildInfos: []

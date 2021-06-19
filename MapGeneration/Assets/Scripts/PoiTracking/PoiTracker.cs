@@ -24,7 +24,7 @@ public class PoiTracker : MonoBehaviour
     /// <summary>
     /// POI tracking data for the nearest POI.
     /// </summary>
-    public PoiTrackingContext NearestPoi => PoisSortedByDistance[0];
+    public PoiTrackingContext NearestPoi => PoisSortedByDistance.Count() > 0 ? PoisSortedByDistance[0] : new PoiTrackingContext();
 
 
     private void Awake()

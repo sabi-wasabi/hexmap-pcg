@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.pigeonprotocol.pigeonframework": {
-      "version": "https://github.com/The-Pigeon-Protocol/PigeonProject_Unity-Framework.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "bd967f59b590842271aba29c8ab8aea4c0e03057"
-    },
     "com.unity.cinemachine": {
       "version": "2.6.4",
       "depth": 0,
