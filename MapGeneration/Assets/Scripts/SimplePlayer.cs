@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 
-public class Player : MonoBehaviour
+public class SimplePlayer : MonoBehaviour
 {
     [SerializeField] private float _speed;
 

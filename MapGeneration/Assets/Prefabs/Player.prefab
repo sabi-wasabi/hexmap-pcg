@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4289833281424068635}
   - component: {fileID: 4289833281424068634}
   - component: {fileID: 4289833281424068615}
-  - component: {fileID: 4289833281424068608}
+  - component: {fileID: 3892635227736714866}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4289833281424068608}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4289833281424068608
+--- !u!114 &3892635227736714866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,4 +215,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a82591914dab64f80ceabc72d62fff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 100
+  _speed: 0
