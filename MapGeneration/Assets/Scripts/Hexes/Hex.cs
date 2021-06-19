@@ -13,7 +13,7 @@ public class Hex : HexBase
     [SerializeField] private GameObject _wallPF;
 
     private List<(HexBase, Vector2Int)> _neighbors = new List<(HexBase, Vector2Int)>();
-    private Vector2Int[] _selfOffsets = new Vector2Int[]{ new Vector2Int(0,0)};
+    private Vector2Int[] _relatives = new Vector2Int[]{ new Vector2Int(0,0)};
 
     private Transform _wallParent;
     private (Vector2Int, bool)[] _wallSettings = new (Vector2Int, bool)[6]; // Offset to neighbor in that direction, isWallThere?
@@ -68,7 +68,7 @@ public class Hex : HexBase
                     Vector2Int offSet = new Vector2Int(q, r);
                     if (hexGrid.ContainsKey(coords + offSet))
                     {
-                        if (_selfOffsets.Contains(offSet))
+                        if (_relatives.Contains(offSet))
                         {
                             SetWall(offSet, false, coords + offSet);
                         }
@@ -139,7 +139,7 @@ public class Hex : HexBase
 
     public void SetSelfOffsets(Vector2Int[] self)
     {
-        _selfOffsets = self;
+        _relatives = self;
     }
 
     public (HexBase, Vector2Int)[] GetUnvisitedNeighbors()

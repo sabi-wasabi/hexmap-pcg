@@ -11,7 +11,7 @@ public class CompositeHex : HexBase
     private void Awake()
     {
         visited = false;
-        RegisterFriendsOnHexes();
+        RegisterRelativeHexes();
     }
 
     public override float GetRadius()
@@ -82,7 +82,7 @@ public class CompositeHex : HexBase
         }
     }
 
-    private void RegisterFriendsOnHexes()
+    private void RegisterRelativeHexes()
     {
         for (int i = 0; i < _hexes.Length; i++)
         {
