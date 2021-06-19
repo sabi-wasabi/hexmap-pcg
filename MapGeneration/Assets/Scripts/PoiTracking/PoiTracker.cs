@@ -74,6 +74,7 @@ public class PoiTracker : MonoBehaviour
                 PoiTrackingContext ctx = new PoiTrackingContext
                 {
                     PoiHex = poiHex,
+                    NextHex = poiHex,
                     Path = path,
                     HasArrived = false,
                 };
