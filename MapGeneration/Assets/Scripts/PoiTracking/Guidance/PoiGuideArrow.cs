@@ -11,6 +11,12 @@ public class PoiGuideArrow : PoiGuide
 
     private GameObject _arrow = default;
 
+    public bool UsePathfinding
+    {
+        get => _usePathfinding;
+        set => _usePathfinding = value;
+    }
+
 
     protected override void Awake()
     {
